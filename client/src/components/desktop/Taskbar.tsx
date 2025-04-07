@@ -13,6 +13,7 @@ import { ContextMenu } from './ContextMenu';
 import { nanoid } from 'nanoid';
 import { AppWindow, Layout } from 'lucide-react';
 import { appIcons, getAppIcon } from '@/lib/appIcons';
+import Battery from '@/components/ui/battery';
 
 export function Taskbar() {
   const { windows, activeWindowId, pinnedApps, setActiveWindow, toggleMinimize, addWindow, taskbarMode } = useDesktopStore();
@@ -111,7 +112,7 @@ export function Taskbar() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {taskbarMode !== 'windows11' && (
+        {taskbarMode !== 'allcentered' && (
           <Button
             variant={showStartMenu ? "secondary" : "ghost"}
             size="icon"
@@ -123,9 +124,9 @@ export function Taskbar() {
         )}
 
         <div className={`flex-1 flex items-center space-x-1 taskbar-content ${
-          taskbarMode === 'chrome' || taskbarMode === 'windows11' ? 'justify-center' : ''
+          taskbarMode === 'centeredapps' || taskbarMode === 'allcentered' ? 'justify-center' : ''
         }`}>
-          {taskbarMode === 'windows11' && (
+          {taskbarMode === 'allcentered' && (
             <Button
               variant={showStartMenu ? "secondary" : "ghost"}
               size="icon"
@@ -181,12 +182,13 @@ export function Taskbar() {
             );
           })}
         </div>
-
+        <div className="absolute right-40 text-sm pointer-events-none select-none">
+        <Battery />
+        </div>
         <div className="absolute right-2 text-sm pointer-events-none select-none">
           {dateTime}
         </div>
       </div>
-
       {showStartMenu && (
         <StartMenu onClose={() => setShowStartMenu(false)} />
       )}
