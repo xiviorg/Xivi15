@@ -77,7 +77,7 @@ export function Settings() {
             <RadioGroup
               value={taskbarMode}
               onValueChange={(value) => 
-                updateSettings({ taskbarMode: value as 'normal' | 'chrome' | 'windows11' })
+                updateSettings({ taskbarMode: value as 'normal' | 'centeredapps' | 'allcentered' })
               }
               className="flex flex-col space-y-1"
             >
@@ -86,12 +86,12 @@ export function Settings() {
                 <Label htmlFor="normal">Normal (Left-aligned)</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="chrome" id="chrome" />
-                <Label htmlFor="chrome">Chrome OS style</Label>
+                <RadioGroupItem value="centeredapps" id="centeredapps" />
+                <Label htmlFor="centeredapps">Apps Centered</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="windows11" id="windows11" />
-                <Label htmlFor="windows11">Windows 11 style</Label>
+                <RadioGroupItem value="allcentered" id="allcentered" />
+                <Label htmlFor="allcentered">Completely Centered</Label>
               </div>
             </RadioGroup>
           </div>

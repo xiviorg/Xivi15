@@ -106,13 +106,13 @@ export function Window({ id, title, children, position, isMinimized, isMaximized
       ref={windowRef}
       className={cn(
         'absolute flex flex-col rounded-lg overflow-hidden bg-background/80 backdrop-blur-md border shadow-lg fade-in window-transition',
-        isMaximized && 'fixed !left-0 !right-0 !top-8 !bottom-12'
+        isMaximized && 'fixed !left-0 !right-0 !top-0 !bottom-12'
       )}
       style={{
         left: position?.x ?? 100,
-        top: position?.y ?? 40, // Start below topbar
+        top: position?.y ?? 44,
         width: isMaximized ? '100%' : (position?.width ?? 600),
-        height: isMaximized ? 'calc(100% - 88px)' : (position?.height ?? 400), // Account for topbar and taskbar
+        height: isMaximized ? 'calc(100% - 58px)' : (position?.height ?? 400), // Account for topbar and taskbar
         zIndex
       }}
       onClick={() => setActiveWindow(id)}
