@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Power, Maximize2 } from 'lucide-react';
+import { Power, Maximize2, Minimize2 } from 'lucide-react';
 import { useDesktopStore } from '@/store/desktop';
 import { StartMenu } from './StartMenu';
 import { ContextMenu } from './ContextMenu';
@@ -26,6 +26,7 @@ export function Taskbar() {
     appTitle: string;
   } | null>(null);
   const [dateTime, setDateTime] = useState('');
+  const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement);
 
   useEffect(() => {
     const updateTime = () => {
@@ -83,6 +84,25 @@ export function Taskbar() {
   const handleRestart = () => {
     window.location.reload();
   };
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
+  useEffect(() => {
+    const handlefschange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handlefschange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handlefschange);
+    };
+  }, []);
 
   return (
     <>
@@ -188,13 +208,29 @@ export function Taskbar() {
           })}
         </div>
 
-        <div className="absolute right-40 text-sm pointer-events-none select-none">
+        <div
+          style={{ right: '12.5rem' }}
+          className="absolute text-sm pointer-events-none select-none"
+        >
           <Battery />
         </div>
 
-        <div className="absolute right-2 text-sm pointer-events-none select-none">
+        <div className="absolute right-12 text-sm pointer-events-none select-none">
           {dateTime}
         </div>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-2 h-8 px-2 text-sm"
+          onClick={toggleFullscreen}
+        >
+          {isFullscreen ? (
+            <Minimize2 className="h-4 w-4" />
+          ) : (
+            <Maximize2 className="h-4 w-4" />
+          )}
+        </Button>
       </div>
 
       {showStartMenu && <StartMenu onClose={() => setShowStartMenu(false)} />}
