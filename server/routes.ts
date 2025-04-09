@@ -1,11 +1,19 @@
-import type { Express, Request } from "express";
+import { type Express, type NextFunction, type Request, type RequestHandler, type Response } from "express";
 import { createServer, type Server } from "http";
 import fetch from "node-fetch";
 import { promises as fs } from "fs";
 import { join } from "path";
 
+function asyncHandler(
+  fn: (req: Request, res: Response, next: NextFunction) => Promise<any>
+): RequestHandler {
+  return (req, res, next) => {
+    fn(req, res, next).catch(next);
+  };
+}
+
 export function registerRoutes(app: Express): Server {
-  app.use("/ric", async (req, res, next) => {
+  app.use("/ric", asyncHandler(async (req, res, next) => {
     if (req.url === "/") {
       res.send(`
         <!DOCTYPE html>
@@ -178,9 +186,9 @@ export function registerRoutes(app: Express): Server {
         res.status(500).send(`Proxy Error: ${errormsg}`);
       }
     }
-  });
+  }));
 
-  app.get("/api/proxy", async (req: Request, res) => {
+  app.get("/api/proxy", asyncHandler(async (req: Request, res) => {
     try {
       const url = req.query.url as string;
       if (!url) {
@@ -286,9 +294,9 @@ export function registerRoutes(app: Express): Server {
       console.error("Proxy error:", error);
       res.status(500).send("Error fetching URL");
     }
-  });
+  }));
 
-  app.post("/api/chat", async (req, res) => {
+  app.post("/api/chat", asyncHandler(async (req, res) => {
     try {
       const messages = req.body.messages;
       try {
@@ -331,9 +339,9 @@ export function registerRoutes(app: Express): Server {
         details: outerError instanceof Error ? outerError.message : "Unknown error",
       });
     }
-  });
+  }));
 
-  app.get("/api/music/search", async (req, res) => {
+  app.get("/api/music/search", asyncHandler(async (req, res) => {
     try {
       const query = req.query.q as string;
       if (!query) {
@@ -357,7 +365,7 @@ export function registerRoutes(app: Express): Server {
       console.error("Search error:", error);
       res.status(500).json({ error: "Failed to search songs" });
     }
-  });
+  }));
 
   app.get("/api/music/stream", async (req, res) => {
     try {
