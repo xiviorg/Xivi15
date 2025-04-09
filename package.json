@@ -4,7 +4,8 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev:dev": "echo This script doesn\\'t work yet. Please use the build and start scripts instead. # bun server/index.ts",
+    "dev": "vite dev",
+    "dev:dev": "vite dev",
     "build": "mkdir -p ./dist/ && vite build && cp -r ./server/* ./dist/ && cp ./vite.config.ts ./dist/vite.config.ts",
     "start": "[ -f ./.env ] && source ./.env; bun dist/index.ts",
     "dev:check": "bun tsc",
