@@ -6,17 +6,17 @@
 <h1>Xivi15</h1>
 
 ## Features
+
 - [x] Unique and Appealing UI
 - [x] Wide selection of games
-- [x] Customizable switchable proxy 
+- [x] Customizable switchable proxy
 - [x] Fully functional built-in AI
 - [x] Custom built-in Music Player
 - [x] Numerous adjustable settings
 - [x] Variety of useful features
 - [x] Custom built-in Files System
 - [x] Partially functional terminal
- 
-      
+
 ## Setup
 
 > [!IMPORTANT]  
@@ -26,13 +26,15 @@
 #### !!! Xivi CANNOT run with Windows or macOS as the instance server, please use Linux to set up your instance instead !!!
 
 Setup commands:
-```
+
+```sh
 git clone https://github.com/xiviorg/Xivi15.git
 cd Xivi15
-bun install
+bun install --frozen-lockfile
 bun run cmd:production
 bun run pm2:start
 ```
 
 ## Join us
-If you would like to support the development and get further information on Xivi, You can join the discord [here](http://dsc.gg/xiviservices). 
+
+If you would like to support the development and get further information on Xivi, You can join the discord [here](http://dsc.gg/xiviservices).
