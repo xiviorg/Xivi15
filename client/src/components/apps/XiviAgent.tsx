@@ -144,7 +144,7 @@ export function XiviAgent({ initialQuery, timestamp }: XiviAgentProps) {
         setIsLoading(false);
         return;
       } else if (query.includes("chrome")) {
-        store.updateSettings({ taskbarMode: "chrome" });
+        store.updateSettings({ taskbarMode: "centeredapps" });
         setMessages(prev => [...prev, {
           role: "assistant",
           content: "Taskbar set to Chrome OS style! 🌐"
@@ -152,7 +152,7 @@ export function XiviAgent({ initialQuery, timestamp }: XiviAgentProps) {
         setIsLoading(false);
         return;
       } else if (query.includes("windows") || query.includes("win11")) {
-        store.updateSettings({ taskbarMode: "windows11" });
+        store.updateSettings({ taskbarMode: "allcentered" });
         setMessages(prev => [...prev, {
           role: "assistant",
           content: "Taskbar set to Windows 11 style! 💻"
