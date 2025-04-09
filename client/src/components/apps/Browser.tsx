@@ -153,7 +153,7 @@ export function Browser() {
               )}
             >
               <iframe
-                ref={el => iframeRefs.current[tab.id] = el}
+                ref={el => { iframeRefs.current[tab.id] = el }}
                 src={tab.url}
                 className="w-full h-full"
                 sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"
