@@ -117,10 +117,6 @@
   scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--secondary));
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @keyframes fadeIn {
   from {
     opacity: 0;
