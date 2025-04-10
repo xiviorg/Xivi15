@@ -32,6 +32,7 @@ git clone https://github.com/xiviorg/Xivi15.git
 cd Xivi15
 bun install --frozen-lockfile
 bun run cmd:production
+bun run build
 bun run pm2:start
 ```
 
