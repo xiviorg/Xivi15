@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 
 export function Game2048() {
   const [board, setBoard] = useState<number[][]>([[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]]);

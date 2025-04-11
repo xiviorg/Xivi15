@@ -1,6 +1,6 @@
 
-import { Button } from "@/components/ui/button";
-import { useDesktopStore } from "@/store/desktop";
+import { Button } from "../ui/button";
+import { useDesktopStore } from "../../store/desktop";
 import { nanoid } from "nanoid";
 import { Gamepad2, Layout, Bomb, Scissors, Hammer, Target, Swords, Fish, Castle, Footprints, Snowflake, Shield } from "lucide-react";
 

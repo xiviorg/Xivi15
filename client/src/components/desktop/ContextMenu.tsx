@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+import { Button } from '../ui/button'
+import { Card } from '../ui/card'
 import { Pin, Trash } from 'lucide-react'
-import { useDesktopStore } from '@/store/desktop'
+import { useDesktopStore } from '../../store/desktop'
 
 interface ContextMenuProps {
   x: number

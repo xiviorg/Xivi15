@@ -1,6 +1,6 @@
 
 import { useEffect, useState, useCallback } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '../ui/button';
 
 const BOARD_WIDTH = 10;
 const BOARD_HEIGHT = 20;

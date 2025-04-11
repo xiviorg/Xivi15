@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useEffect, useState } from 'react';
+import { Button } from '../ui/button';
 import { Maximize2 } from 'lucide-react';
 
 export function TopBar() {

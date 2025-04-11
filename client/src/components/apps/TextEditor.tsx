@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
+import { Textarea } from '../ui/textarea'
+import { Button } from '../ui/button'
 import { Save } from 'lucide-react'
-import { useToast } from '@/hooks/use-toast'
+import { useToast } from '../../hooks/use-toast'
 
 interface TextEditorProps {
   path?: string[];

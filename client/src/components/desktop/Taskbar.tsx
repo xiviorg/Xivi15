@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useEffect, useState } from 'react';
+import { Button } from '../ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '../ui/dropdown-menu';
 import { Power, Maximize2, Minimize2 } from 'lucide-react';
-import { useDesktopStore } from '@/store/desktop';
+import { useDesktopStore } from '../../store/desktop';
 import { StartMenu } from './StartMenu';
 import { ContextMenu } from './ContextMenu';
 import { nanoid } from 'nanoid';
 import { AppWindow, Layout } from 'lucide-react';
-import { appIcons, getAppIcon } from '@/lib/appIcons';
-import Battery from '@/components/ui/battery';
+import { appIcons, getAppIcon } from '../../lib/appIcons';
+import Battery from '../ui/battery';
 
 export function Taskbar() {
-  const { windows, activeWindowId, pinnedApps, setActiveWindow, toggleMinimize, addWindow, taskbarMode } = useDesktopStore();
+  const { windows, activeWindowId, pinnedApps = [], setActiveWindow, toggleMinimize, addWindow, taskbarMode } = useDesktopStore();
   const [showStartMenu, setShowStartMenu] = useState(false);
   const [contextMenu, setContextMenu] = useState<{
     x: number;
@@ -106,7 +106,7 @@ export function Taskbar() {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-t flex items-center px-2 z-[9999]">
+      <div className="fixed bottom-0 left-0 right-0 h-12 bg-background/80 backdrop-blur-md border-t flex items-center px-2 z-[9999]" data-testid="taskbar">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="h-6 w-6 mr-2">
@@ -134,6 +134,7 @@ export function Taskbar() {
             size="icon"
             className="mr-2"
             onClick={() => setShowStartMenu(!showStartMenu)}
+            data-testid="start-button"
           >
             <Layout className="h-5 w-5" />
           </Button>
@@ -183,6 +184,7 @@ export function Taskbar() {
               <Button
                 key={window.id}
                 data-window-id={window.id}
+                data-testid={`taskbar-item-${window.component.toLowerCase()}`}
                 variant={activeWindowId === window.id ? 'secondary' : 'ghost'}
                 className="h-8 px-2 text-sm"
                 onClick={() => {

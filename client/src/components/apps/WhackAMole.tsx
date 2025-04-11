@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '../ui/button';
 
 export function WhackAMole() {
   const [score, setScore] = useState(0);

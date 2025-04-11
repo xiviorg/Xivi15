@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Window } from "@/components/desktop/Window";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useDesktopStore } from "@/store/desktop";
+import { Window } from "../desktop/Window";
+import { Button } from "../ui/button";
+import { Checkbox } from "../ui/checkbox";
+import { useDesktopStore } from "../../store/desktop";
 
 export function Welcome() {
   const [showAgain, setShowAgain] = useState(true);

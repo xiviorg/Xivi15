@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from 'react';
 import { Search, Play, Pause, Heart, SkipBack, SkipForward, Repeat, Music } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Card } from '../ui/card';
 
 export function MusicPlayer() {
   const [query, setQuery] = useState('');

@@ -1,12 +1,12 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "../ui/card";
+import { Button } from "../ui/button";
 import { useState, useEffect } from "react";
-import { useDesktopStore } from "@/store/desktop";
+import { useDesktopStore } from "../../store/desktop";
 import { ContextMenu } from "./ContextMenu";
 import { nanoid } from "nanoid";
 import { AppWindow, Bot, Cloud, Layout, Bomb, Scissors, Hammer, Calendar, Image as ImageIcon, Monitor, Timer, Globe, FileText, Calculator, Folder, Settings, Gamepad2, File, Music, Terminal } from "lucide-react";
-import { getAppIcon } from "@/lib/appIcons";
-import { apps } from '@/lib/apps';
+import { getAppIcon } from "../../lib/appIcons";
+import { apps } from '../../lib/apps';
 
 interface StartMenuProps {
   onClose: () => void;
@@ -86,7 +86,7 @@ export function StartMenu({ onClose }: StartMenuProps) {
 
   return (
     <>
-      <Card className={`start-menu fixed bottom-12 w-[420px] h-[450px] p-4 bg-background/80 backdrop-blur-md z-[9000] menu-transition ${
+      <Card data-testid="start-menu" className={`start-menu fixed bottom-12 w-[420px] h-[450px] p-4 bg-background/80 backdrop-blur-md z-[9000] menu-transition ${
         useDesktopStore().taskbarMode === 'allcentered' ? 'left-1/2 -translate-x-1/2' : 'left-2'
       }`}>
         <div className="mb-4">

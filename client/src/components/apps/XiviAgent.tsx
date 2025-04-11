@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Bot } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 import { nanoid } from "nanoid";
-import { useDesktopStore } from "@/store/desktop";
-import { eventBus } from "@/lib/eventBus";
+import { useDesktopStore } from "../../store/desktop";
+import { eventBus } from "../../lib/eventBus";
 
 interface Message {
   role: "user" | "assistant";
@@ -48,7 +48,7 @@ export function XiviAgent({ initialQuery, timestamp }: XiviAgentProps) {
 
   useEffect(() => {
     const setupEventBus = async () => {
-      const { eventBus } = await import("@/lib/eventBus");
+      const { eventBus } = await import("../../lib/eventBus");
       const handler = (question: string) => {
         handleQuery(question);
       };
@@ -165,7 +165,7 @@ export function XiviAgent({ initialQuery, timestamp }: XiviAgentProps) {
     // Handle timer and stopwatch commands
     if (query.includes("timer") || query.includes("stopwatch")) {
       const store = useDesktopStore.getState();
-      const { apps } = await import("@/lib/apps");
+      const { apps } = await import("../../lib/apps");
       const app = apps.timerclock;
       
       store.addWindow({
@@ -215,7 +215,7 @@ export function XiviAgent({ initialQuery, timestamp }: XiviAgentProps) {
       query.includes("start")
     ) {
       const store = useDesktopStore.getState();
-      const { apps } = await import("@/lib/apps");
+      const { apps } = await import("../../lib/apps");
 
       for (const [key, app] of Object.entries(apps)) {
         if (query.includes(key)) {

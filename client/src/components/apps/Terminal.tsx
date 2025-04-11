@@ -1,9 +1,9 @@
 
 import { useState, useRef, useEffect } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "../ui/scroll-area";
+import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { Plus, X } from "lucide-react";
-import { useDesktopStore } from "@/store/desktop";
+import { useDesktopStore } from "../../store/desktop";
 
 interface TerminalTab {
   id: string;
