@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react'
-import { Card } from '@/components/ui/card'
+import React, { useState, useRef, useEffect } from 'react'
+import { Card } from '../ui/card'
 import { Maximize2, Minus, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { useDesktopStore, type WindowPosition } from '@/store/desktop'
-import { cn } from '@/lib/utils'
+import { Button } from '../ui/button'
+import { useDesktopStore, type WindowPosition } from '../../store/desktop'
+import { cn } from '../../lib/utils'
 
 interface WindowProps {
   id: string
@@ -16,7 +16,8 @@ interface WindowProps {
 }
 
 export function Window({ id, title, children, position, isMinimized, isMaximized, zIndex }: WindowProps) {
-  const { setActiveWindow, updateWindowPosition, toggleMinimize, toggleMaximize, removeWindow } = useDesktopStore()
+  const { setActiveWindow, updateWindowPosition, toggleMinimize, toggleMaximize, removeWindow, activeWindowId } = useDesktopStore()
+const isActive = activeWindowId === id
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
   const windowRef = useRef<HTMLDivElement>(null)
@@ -104,6 +105,8 @@ export function Window({ id, title, children, position, isMinimized, isMaximized
   return (
     <Card
       ref={windowRef}
+      data-testid={`window-${id}`}
+      data-active={isActive ? "true" : "false"}
       className={cn(
         'absolute flex flex-col rounded-lg overflow-hidden bg-background/80 backdrop-blur-md border shadow-lg fade-in window-transition',
         isMaximized && 'fixed !left-0 !right-0 !top-0 !bottom-12'
@@ -112,7 +115,7 @@ export function Window({ id, title, children, position, isMinimized, isMaximized
         left: position?.x ?? 100,
         top: position?.y ?? 44,
         width: isMaximized ? '100%' : (position?.width ?? 600),
-        height: isMaximized ? 'calc(100% - 58px)' : (position?.height ?? 400), // Account for topbar and taskbar
+        height: isMaximized ? 'calc(100% - 58px)' : (position?.height ?? 400),
         zIndex
       }}
       onClick={() => setActiveWindow(id)}
@@ -124,22 +127,24 @@ export function Window({ id, title, children, position, isMinimized, isMaximized
           height: 'var(--topbar-height)',
           userSelect: 'none'
         }}
+        data-testid="window-titlebar"
+        data-active={isActive ? "true" : "false"}
       >
         <div className="font-medium">{title}</div>
         <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-2">
             <div>
-              <Button variant="ghost" size="icon" onClick={handleMinimize} title="Minimize">
+              <Button data-testid="minimize-button" variant="ghost" size="icon" onClick={handleMinimize} title="Minimize">
                 <Minus className="h-4 w-4" />
               </Button>
             </div>
             <div>
-              <Button variant="ghost" size="icon" onClick={() => toggleMaximize(id)} title="Maximize">
+              <Button data-testid="maximize-button" variant="ghost" size="icon" onClick={() => toggleMaximize(id)} title="Maximize">
                 <Maximize2 className="h-4 w-4" />
               </Button>
             </div>
             <div>
-              <Button variant="ghost" size="icon" onClick={handleClose} title="Close">
+              <Button data-testid="close-button" variant="ghost" size="icon" onClick={handleClose} title="Close">
                 <X className="h-4 w-4" />
               </Button>
             </div>

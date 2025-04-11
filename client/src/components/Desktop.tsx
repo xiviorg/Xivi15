@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SelectionBox } from "./desktop/SelectionBox";
 import { TopBar } from "./desktop/TopBar";
-import { useDesktopStore } from "@/store/desktop";
+import { useDesktopStore } from "../store/desktop";
 import { Window } from "./desktop/Window";
 import { Taskbar } from "./desktop/Taskbar";
 import { Spotlight } from "./desktop/Spotlight";
@@ -115,6 +115,7 @@ export function Desktop() {
         transition:
           "background-color 0.3s ease-in-out, background-image 0.3s ease-in-out",
       }}
+      data-testid="desktop"
     >
       {windows.map((window) => {
         const Component = components[window.component];

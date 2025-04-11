@@ -1,10 +1,10 @@
 
 import { useState, useRef } from 'react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import { Tabs, TabsList, TabsTrigger } from '../ui/tabs'
 import { Globe, Plus, X, ArrowLeft, ArrowRight, RotateCw } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 type Tab = {
   id: string

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Bot } from 'lucide-react';
-import { useDesktopStore } from '@/store/desktop';
+import { useDesktopStore } from '../../store/desktop';
 import { nanoid } from 'nanoid';
 
 export function Spotlight() {
@@ -53,7 +53,7 @@ export function Spotlight() {
     
     // Small delay to ensure component is mounted
     setTimeout(async () => {
-      const { eventBus } = await import('@/lib/eventBus');
+      const { eventBus } = await import('../../lib/eventBus');
       eventBus.emit('newQuestion', questionToAsk);
     }, 100);
     

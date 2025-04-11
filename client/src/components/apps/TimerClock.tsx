@@ -1,10 +1,10 @@
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 
-import { eventBus } from '@/lib/eventBus';
+import { eventBus } from '../../lib/eventBus';
 
 interface TimerClockProps {
   initialTimer?: {

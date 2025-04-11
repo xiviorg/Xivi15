@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Card } from '@/components/ui/card';
+import { Card } from '../ui/card';
 import axios from 'axios';
 
 export function Weather() {

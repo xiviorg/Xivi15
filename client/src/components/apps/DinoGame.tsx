@@ -1,6 +1,6 @@
 
 import { useEffect, useState, useCallback } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 
 const GRAVITY = 1.5;
 const JUMP_FORCE = -20;

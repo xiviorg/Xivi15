@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Switch } from '@/components/ui/switch'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { useDesktopStore } from '@/store/desktop'
-import { useToast } from '@/hooks/use-toast'
+import { Button } from '../ui/button'
+import { Label } from '../ui/label'
+import { Switch } from '../ui/switch'
+import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
+import { useDesktopStore } from '../../store/desktop'
+import { useToast } from '../../hooks/use-toast'
 import { useEffect } from 'react'
 
 export function Settings() {

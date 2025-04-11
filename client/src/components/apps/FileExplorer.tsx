@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { Button } from '../ui/button'
+import { ScrollArea } from '../ui/scroll-area'
 import { Folder, File, ChevronRight, ChevronUp, Trash, Plus } from 'lucide-react'
-import { fs } from '@/lib/fileSystem'
-import { useDesktopStore } from '@/store/desktop'
+import { fs } from '../../lib/fileSystem'
+import { useDesktopStore } from '../../store/desktop'
 import { nanoid } from 'nanoid'
 import {
   ContextMenu,
@@ -11,9 +11,9 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
   ContextMenuSeparator,
-} from '@/components/ui/context-menu'
-import { Input } from '@/components/ui/input'
-import { Dialog, DialogHeader, DialogContent, DialogFooter, DialogTitle } from '@/components/ui/dialog'
+} from '../ui/context-menu'
+import { Input } from '../ui/input'
+import { Dialog, DialogHeader, DialogContent, DialogFooter, DialogTitle } from '../ui/dialog'
 
 
 export function FileExplorer() {

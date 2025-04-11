@@ -1,0 +1,6 @@
+{
+  "browsers": ["chromium"],
+  "use": {
+    "runner": "bun"
+  }
+}

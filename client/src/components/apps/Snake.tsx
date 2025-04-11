@@ -1,7 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
+import { Button } from '../ui/button';
+import { Slider } from '../ui/slider';
 
 type Position = { x: number; y: number };
 
