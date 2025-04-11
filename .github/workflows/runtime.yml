@@ -15,10 +15,11 @@ jobs:
               run: bun install --frozen-lockfile
 
             - name: Run Vitest coverage
+              id: run_coverage
               run: bun run test:coverage
             
             - name: Upload coverage report
-              if: always()
+              if: success() && steps.run_coverage.outcome == 'success'
               uses: actions/upload-artifact@v3
               with:
                 name: coverage
@@ -56,20 +57,21 @@ jobs:
               run: bun x playwright install --with-deps chromium
 
             - name: Run E2E tests
+              id: run_tests
               run: bun run test:e2e
 
             - name: Upload Playwright report
-              if: always()
+              if: success() && steps.run_tests.outcome == 'success'
               uses: actions/upload-artifact@v3
               with:
-                name: playwright-report
-                path: playwright-report/
-                retention-days: 7
+                  name: playwright-report
+                  path: playwright-report/
+                  retention-days: 7
 
             - name: Upload test results
-              if: always()
+              if: success() && steps.run_tests.outcome == 'success'
               uses: actions/upload-artifact@v3
               with:
-                name: test-results
-                path: test-results/
-                retention-days: 7
+                  name: test-results
+                  path: test-results/
+                  retention-days: 7
