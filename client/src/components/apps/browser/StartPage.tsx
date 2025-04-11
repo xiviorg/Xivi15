@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "../../ui/input";
+import { Button } from "../../ui/button";
 import { Search } from "lucide-react";
 
 interface StartPageProps {
@@ -39,7 +39,7 @@ export function StartPage({ onNavigate }: StartPageProps) {
           <Input
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
             placeholder="Search the web or enter a URL"
             className="flex-1"
           />
