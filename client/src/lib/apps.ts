@@ -228,6 +228,13 @@ export const apps = {
     icon: Hand,
     category: "System",
   },
+  appstore: {
+    id: "appstore",
+    title: "App Store",
+    component: "AppStore",
+    icon: Cloud,
+    category: "System",
+  }
 } as const;
 
 export type AppId = keyof typeof apps;

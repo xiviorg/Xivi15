@@ -35,6 +35,7 @@ import { PhotoViewer } from "./apps/PhotoViewer";
 import { MusicPlayer } from "./apps/MusicPlayer";
 import { Terminal } from "./apps/Terminal";
 import { XiviAgent } from "./apps/XiviAgent";
+import { AppStore } from "./apps/AppStore";
 
 const components: { [key: string]: React.ComponentType } = {
   XiviAgent,
@@ -66,6 +67,7 @@ const components: { [key: string]: React.ComponentType } = {
   PhotoViewer,
   MusicPlayer,
   Terminal,
+  AppStore,
 };
 
 const lightThemeBg = "/light-theme.jpg";

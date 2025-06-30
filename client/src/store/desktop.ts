@@ -58,6 +58,7 @@ const initialState: Omit<DesktopState, 'addWindow' | 'removeWindow' | 'setActive
   pinnedApps: [
     { title: 'Files', component: 'FileExplorer' },
     { title: 'Web Browser', component: 'Browser' },
+    { title: 'App Store', component: 'AppStore' },
     { title: 'Text Editor', component: 'TextEditor' },
     { title: 'Settings', component: 'Settings' }
   ],
